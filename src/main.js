@@ -8,6 +8,8 @@ import router from './routes/index';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+// Iconos
+require('./plugins/fontawesome');
 
 // ---------------------------------------------------------------//
 // Configuracion para test/produccion                             //
