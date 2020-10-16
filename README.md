@@ -1,24 +1,15 @@
-# crudVue
+# CRUD - Vue.js
 
-## Project setup
-```
-npm install
-```
+Ejemplo de CRUD realizado en Vue.js, utilizando de BackEnd la API Rest de Firebase.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Instalar Dependencias
+Ejecutar en terminal comando: `npm install`.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Iniciar proyecto
+Ejecutar en terminal el comando `npm run serve` e introducir en el navegador `http://localhost:8080/`.
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Compilar para produccion
+`npm run build`
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Ayuda
+Para mas informacion, [Vue-cli](https://cli.vuejs.org/config/).
