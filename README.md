@@ -1,4 +1,4 @@
-# crudvue
+# crudVue
 
 ## Project setup
 ```
