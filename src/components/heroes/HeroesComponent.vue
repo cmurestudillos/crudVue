@@ -27,7 +27,7 @@
                     </td>
                     <td class="text-center">
                         <router-link :to="'/heroe/'+ heroe.id" class="btn btn-outline-warning mr-1" title="Alta"><font-awesome-icon icon="edit"/></router-link>
-                        <button class="btn btn-outline-danger" :click="borrarHeroe(heroe.id)" title="Eliminar"><font-awesome-icon icon="trash"/></button>
+                        <button class="btn btn-outline-danger" @click="borrarHeroe(heroe.id)" title="Eliminar"><font-awesome-icon icon="trash"/></button>
                     </td>
                 </tr>
             </tbody>
@@ -57,7 +57,7 @@ import axios from 'axios';
 // EndPoint
 import global from '../../conf/global.js';
 // Popup de alerta
-import swal from 'sweetalert2';
+import swal from 'sweetalert';
 
 export default {
     name: 'HeroesComponent',
@@ -106,7 +106,7 @@ export default {
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        axios.delete(this.api + '/heroes/' + idHeroe + '.json')
+                        axios.delete(this.api + '/heroe/' + idHeroe + '.json')
                         .then(res => {
                             this.heroes = res.data;
                         });
