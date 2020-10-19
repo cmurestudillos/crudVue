@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import Css from './App.css';
 // Estilos animados
 import Styles from './assets/css/animate.css';
 // Rutas
@@ -22,5 +23,5 @@ Vue.use(BootstrapVue);
 
 new Vue({
   router,
-  render: h => h(App, Styles),
+  render: h => h(App, Css, Styles),
 }).$mount('#app')
