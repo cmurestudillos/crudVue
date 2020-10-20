@@ -58,6 +58,8 @@ import axios from 'axios';
 import global from '../../conf/global.js';
 // Popup de alerta
 import swal from 'sweetalert';
+// Modelo para Heroe
+import HeroeModel from '../../models/Heroe.js';
 
 export default {
     name: 'HeroesComponent',
@@ -71,30 +73,50 @@ export default {
         return {
             api: global.url,
             cargando: false,
-            heroes: []
+            heroes: HeroeModel
         }
     },     
     methods: {
         // Metodo para obtener datos del articulo seleccionado
         getHeroes(){
             // Log de seguimiento
-            console.log('HeroeComponent.vue - Metodo getHeroes');
+            console.log('HeroesComponent.vue - Metodo getHeroes');
 
             this.cargando = true;
 
             axios.get(this.api + '/heroes.json')
                 .then( res => {
                 if(res.data){
-                    this.heroes = res.data;
+                    this.heroes = this.heroesArray(res.data);
                     console.log(this.heroes);
                     this.cargando = false;
                 }
             });
         },
+        // Metodo para mostrar el objeto de heroes recibido en el 'res'
+        // del map y devolverlo transofrmado en un Array para mostrar
+        // en pantalla
+        heroesArray(heroesObj){
+            // Log de seguimiento
+            var heroesData = [];
+
+            if(heroesObj === null){
+                return [];
+            }
+
+            Object.keys(heroesObj).forEach( key => {
+                var heroe = HeroeModel;
+                heroe = heroesObj[key];
+                heroe.id = key;
+                // Devolvemos en el Array el objeto extraido
+                heroesData.push(heroe);
+            });
+            return heroesData;
+        },        
         // Metodo para eliminar registro
         borrarHeroe(idHeroe){
            // Log de seguimiento
-            console.log("HeroeComponent.vue - Metodo borrarHeroe");
+            console.log("HeroesComponent.vue - Metodo borrarHeroe");
             
             // popup de confirmacion
             swal({
@@ -106,9 +128,11 @@ export default {
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        axios.delete(this.api + '/heroe/' + idHeroe + '.json')
+                        axios.delete(this.api + 'heroes/' + idHeroe + '.json')
                         .then(res => {
                             this.heroes = res.data;
+                            // Redireccionamos al listado
+                            this.$router.push('/heroes');
                         });
                     } else {
                         swal("Tu archivo esta seguro.");

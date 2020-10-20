@@ -7,7 +7,8 @@ class HeroeModel{
         this.nombre = nombre;
         this.poder = poder;
         // Inicializamos el estado a "vivo"
-        this.estado = true;
+        estado = true;
+        this.estado = estado;
     }
 }
 
