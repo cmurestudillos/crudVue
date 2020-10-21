@@ -62,7 +62,7 @@ export default {
     mounted(){
         // Recogemos el parametro id del registro seleccionado
         this.heroeId = this.$route.params.id; 
-        if(this.heroeId !== ''){
+        if(this.heroeId !== 'nuevo'){
             // Editar
             this.getHeroeById(this.heroeId);
         }
@@ -100,7 +100,7 @@ export default {
             console.log('HeroeComponent.vue - Metodo guardar');
 
             // Si el id de heroe esta relleno, actualizamos, sino escribimos
-            if(this.heroeId){
+            if(this.heroeId !== 'nuevo'){
                 axios.put(this.api + '/heroes/' + this.heroeId + '.json', this.heroe)
                 .then( res => {
                     if(res.data){
