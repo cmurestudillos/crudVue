@@ -88,7 +88,7 @@ export default {
                 .then( res => {
                 if(res.data){
                     this.heroes = this.heroesArray(res.data);
-                    console.log(this.heroes);
+                    //console.log(this.heroes);
                     this.cargando = false;
                 }
             });
@@ -131,8 +131,8 @@ export default {
                         axios.delete(this.api + '/heroes/' + idHeroe + '.json')
                         .then(res => {
                             this.heroes = res.data;
-                            // Redireccionamos al listado
-                            this.$router.push('/heroes');
+                            // Volvemos a cargar actualizada la pantalla sin el registro eliminado
+                            this.getHeroes();
                         });
                     } else {
                         swal("Tu archivo esta seguro.");
